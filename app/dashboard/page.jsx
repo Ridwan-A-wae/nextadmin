@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from './home.module.css'
+import styles from '../ui/dashboard/dashboard.module.css'
 
 export default function page() {
   return (
-    <div>page</div>
+    <div></div>
   )
 }
