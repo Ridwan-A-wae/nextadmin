@@ -1,8 +1,11 @@
 import React from "react";
 import styles from "./id.module.css";
 import Image from "next/image";
+import { fetchUsers } from "@/app/lib/data";
 
-export default function page() {
+export default  function page() {
+
+
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>

@@ -13,9 +13,11 @@ import {
 export default function Navbar() {
   const pathName = usePathname();
 
+  // console.log(pathName.split('/').pop())
+
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{pathName.split("/").pop()}</div>
+      <div className={styles.title}>{pathName.split('/').pop()}</div>
       <div className={styles.menu}>
         <div className={styles.search}>
           {MdSearch}
