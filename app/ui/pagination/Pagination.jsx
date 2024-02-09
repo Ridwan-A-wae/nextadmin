@@ -8,19 +8,21 @@ export default function Pagination({ count }) {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
   const pathName = usePathname();
-  const ITEM_PER_PAGE = 2;
 
   const params = new URLSearchParams(searchParams);
-  const page = params.get("page") || 1
+  const page = params.get("page") || 1;
 
-  const hasPrev = ITEM_PER_PAGE * (parseInt(page) - 1) > 0;
-  const hasNext = ITEM_PER_PAGE * (parseInt(page) - 1) + ITEM_PER_PAGE < count;
+  const USER_PER_PAGE = 2;
 
-  const handleChangePage = (type) => {
+  const hasPrev = USER_PER_PAGE * (parseInt(page) - 1) > 0;
+  const hasNext = USER_PER_PAGE * (parseInt(page) - 1) + USER_PER_PAGE < count;
+
+  const handleClick = (type) => {
     type === "prev"
       ? params.set("page", parseInt(page) - 1)
       : params.set("page", parseInt(page) + 1);
-      replace(`${pathName}?${params}`)
+
+    replace(`${pathName}?${params}`);
   };
 
   return (
@@ -28,14 +30,14 @@ export default function Pagination({ count }) {
       <button
         className={styles.button}
         disabled={!hasPrev}
-        onClick={() => handleChangePage("prev")}
+        onClick={() => handleClick("prev")}
       >
         Previous
       </button>
       <button
         className={styles.button}
         disabled={!hasNext}
-        onClick={() => handleChangePage("next")}
+        onClick={() => handleClick("next")}
       >
         Next
       </button>

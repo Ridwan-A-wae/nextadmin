@@ -6,12 +6,10 @@ import Image from "next/image";
 import Pagination from "@/app/ui/pagination/Pagination";
 import { fetchProducts } from "@/app/lib/data";
 
-export default async function page({searchParams}) {
-  
-  const q = searchParams?.q || ''
-  const page = searchParams?.page || 1
+export default async function page() {
+ 
   console.log(page)
-  const {products, count} = await fetchProducts(q, page);
+  const products = await fetchProducts();
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -68,7 +66,7 @@ export default async function page({searchParams}) {
           ))}
         </tbody>
       </table>
-      <Pagination count={count}/>
+      <Pagination/>
     </div>
   );
 }

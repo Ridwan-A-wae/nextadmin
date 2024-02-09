@@ -7,11 +7,11 @@ import Pagination from "@/app/ui/pagination/Pagination";
 import { fetchUsers } from "@/app/lib/data";
 
 export default async function page({searchParams}) {
-  const q = searchParams?.q ||""
+  const q = searchParams?.q || ''
   const page = searchParams?.page || 1
 
-  const {count, users} = await fetchUsers(q, page);
-  console.log(q);
+  const {users, count} = await fetchUsers(q, page);
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -66,7 +66,7 @@ export default async function page({searchParams}) {
           ))}
         </tbody>
       </table>
-      <Pagination count={count} />
+      <Pagination count={count}/>
     </div>
   );
 }
