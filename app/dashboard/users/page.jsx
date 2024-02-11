@@ -47,7 +47,7 @@ export default async function page({searchParams}) {
                 </div>
               </td>
               <td> {user.email} </td>
-              <td>13.01.2022</td>
+              <td> {user.createdAt ? user.createdAt.toString().slice(4,16) :'Feb 01 2022'} </td>
               <td> {user.isAdmin ? "Admin" : "Client"} </td>
               <td> {user.isActive ? "active" : "passive" } </td>
               <td>
