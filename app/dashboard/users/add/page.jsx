@@ -8,7 +8,7 @@ export default function page() {
       <form action={addUser} className={styles.form}>
         <input type="text" placeholder="username" name="username" required />
         <input type="text" placeholder="email" name="email" required />
-        <input type="text" placeholder="password" name="password" required />
+        <input type="password" placeholder="password" name="password" required />
         <input type="text" placeholder="phone" name="phone" />
         <select name="isAdmin" id="isAdmin">
           <option value={false}>Is Admin?</option>

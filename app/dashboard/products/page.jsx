@@ -5,11 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import Pagination from "@/app/ui/pagination/Pagination";
 import { fetchProducts } from "@/app/lib/data";
+import { deleteProduct } from "@/app/lib/action";
 
-export default async function page() {
- 
-  console.log(page)
-  const products = await fetchProducts();
+export default async function page({ searchParams }) {
+  const q = searchParams?.q || "";
+  const page = searchParams?.page || 1;
+
+  const { products, count } = await fetchProducts(q, page);
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -35,7 +37,7 @@ export default async function page() {
               <td>
                 <div className={styles.product}>
                   <Image
-                    src="/noproduct.jpg"
+                    src={product?.img ? product.img : "/noproduct.jpg"}
                     alt=""
                     width={40}
                     height={40}
@@ -52,21 +54,24 @@ export default async function page() {
 
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/products/test`}>
+                  <Link href={`/dashboard/products/${product.id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
                   </Link>
-                  <button className={`${styles.button} ${styles.delete}`}>
-                    Delete
-                  </button>
+                  <form action={deleteProduct}>
+                    <input type="hidden" value={product.id} name="id" />
+                    <button className={`${styles.button} ${styles.delete}`}>
+                      Delete
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Pagination/>
+      <Pagination count={count} />
     </div>
   );
 }

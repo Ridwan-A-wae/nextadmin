@@ -1,10 +1,11 @@
 import React from "react";
 import styles from "./add.module.css";
+import { addProduct } from "@/app/lib/action";
 
 export default function page() {
   return (
     <div className={styles.container}>
-      <form action="" className={styles.form}>
+      <form action={addProduct} className={styles.form}>
         <input type="text" placeholder="title" name="title" />
         <select name="cat" id="cat">
           <option value="category">Choose a Category</option>
@@ -16,6 +17,8 @@ export default function page() {
         <input type="number" placeholder="stock" name="stock" />
         <input type="text" placeholder="color" name="color" />
         <input type="text" placeholder="size" name="size" />
+        <input className={styles.imgInput} type="text" placeholder="Image" name="img" />
+
         <textarea
           name="desc"
           id="desc"
