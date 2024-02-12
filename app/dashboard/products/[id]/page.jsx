@@ -22,7 +22,7 @@ export default async function page({ params }) {
       </div>
       <div className={styles.formContainer}>
         <form action={updateProduct} className={styles.form}>
-          <label>Title Hello world</label>
+          <label>Title</label>
           <input type="text" placeholder={product.title} name="title" />
           <label>Image</label>
           <input type="text" placeholder={product.img} name="img" />
